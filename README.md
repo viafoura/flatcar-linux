@@ -1,0 +1,1 @@
+This repository contains the CoreOS branch of Linux. A new branch is created for each kernel version the distribution is rebased onto. The currently shipped version is available in the [overlay repository]( https://github.com/coreos/coreos-overlay/tree/master/sys-kernel/coreos-sources/files).
