@@ -23,6 +23,7 @@
 #include <linux/fs_stack.h>
 #include <linux/mman.h>
 #include <linux/security.h>
+#include <linux/aio.h>
 #include "aufs.h"
 
 int au_do_open_nondir(struct file *file, int flags)
