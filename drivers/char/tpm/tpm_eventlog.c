@@ -244,7 +244,12 @@ static int tpm_binary_bios_measurements_show(struct seq_file *m, void *v)
 
 	tempPtr = (char *)&temp_event;
 
-	for (i = 0; i < sizeof(struct tcpa_event) + temp_event.event_size; i++)
+	for (i = 0; i < sizeof(struct tcpa_event); i++)
+		seq_putc(m, tempPtr[i]);
+
+	tempPtr = (char *)&event->event_data;
+
+	for (i = 0; i < temp_event.event_size; i++)
 		seq_putc(m, tempPtr[i]);
 
 	return 0;
