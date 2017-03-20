@@ -260,6 +260,12 @@ extern const typeof(name) __mod_##type##__##name##_device_table		\
 
 struct notifier_block;
 
+#ifdef CONFIG_MODULE_SIG
+extern void enforce_signed_modules(void);
+#else
+static inline void enforce_signed_modules(void) {};
+#endif
+
 #ifdef CONFIG_MODULES
 
 extern int modules_disabled; /* for sysctl */
@@ -629,6 +635,8 @@ static inline bool module_requested_async_probing(struct module *module)
 	return module && module->async_probe_requested;
 }
 
+extern bool secure_modules(void);
+
 #ifdef CONFIG_LIVEPATCH
 static inline bool is_livepatch_module(struct module *mod)
 {
@@ -750,6 +758,10 @@ static inline bool module_requested_async_probing(struct module *module)
 	return false;
 }
 
+static inline bool secure_modules(void)
+{
+	return false;
+}
 #endif /* CONFIG_MODULES */
 
 #ifdef CONFIG_SYSFS
