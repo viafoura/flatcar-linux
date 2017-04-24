@@ -195,6 +195,11 @@ section_table:
 	.short	0		// NumberOfLineNumbers  (0 for executables)
 	.long	0xe0500020	// Characteristics (section flags)
 
+	/* CoreOS 64 byte verity hash value. */
+	.org	_head + 512
+	.ascii	"verity-hash"
+	.org	_head + 512 + 64
+
 	/*
 	 * EFI will load .text onwards at the 4k section alignment
 	 * described in the PE/COFF header. To ensure that instruction
