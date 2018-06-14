@@ -334,7 +334,7 @@ struct tcp_sock {
 
 /* Receiver queue space */
 	struct {
-		u32	space;
+		int	space;
 		u32	seq;
 		u64	time;
 	} rcvq_space;
